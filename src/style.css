@@ -47,3 +47,7 @@ button {
         margin-left: 180px;
     }
 }
+
+#logout-btn {
+    display: none;
+}

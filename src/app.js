@@ -10,13 +10,16 @@ const passwordField = authForm.querySelector('#password');
 const submitButton = authForm.querySelector('#submit-btn');
 const todosButton = document.querySelector('#todos-btn');
 const logoutButton = document.querySelector('#logout-btn');
+const todosTitle = document.querySelector('#todos-title');
 
 const validatePage = (isAuth) => {
     if (isAuth) {
         submitButton.disabled = false;
         authForm.style.display = 'none';
         logoutButton.style.display = 'block';
+        todosTitle.style.display = 'block';
     } else {
+        todosTitle.style.display = 'none';
         logoutButton.style.display = 'none';
         authForm.style.display = 'block';
         document.getElementById('todos-wrapper')?.remove();
@@ -56,7 +59,8 @@ const getTodos = async () => {
     const todos = await apiService.todos();
 
     if (todos.length) {
-       renderTodos(todos)
+        document.getElementById('todos-wrapper')?.remove();
+        renderTodos(todos)
    }
 }
 
